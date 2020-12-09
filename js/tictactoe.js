@@ -121,14 +121,14 @@ function clear() {
 }
 
 disableClick();
-audio('./media/winGame.mp3');
+audio('./media/winGame.mp3'); //playing win game sound
 animateLineDrawing();
 setTimeout(function () { clear(); resetGame(); }, 1000);
 }
 
 
 
-function resetGame() {
+function resetGame() { // Reseting Game
     for (let i = 0; i < 9; i++) {
         let square = document.getElementById(String(i));
         square.style.backgroundImage = '';
