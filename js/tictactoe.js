@@ -91,6 +91,7 @@ function drawWinLine(coordX1, coordY1, coordX2, coordY2) {    //drawing win-line
         y2 = coordY2,
         x = x1,
         y = y1;
+
 function animateLineDrawing() {
     const animationLoop = requestAnimationFrame(animateLineDrawing);
     c.clearRect(0, 0, 608, 608);
@@ -109,15 +110,8 @@ function animateLineDrawing() {
     if (x1 <= x2 && y1 >= y2) {
         if (x < x2) { x += 10; }
         if (y > y2) { y -= 10; }
-        if (x .= x2 && y <= y2) { cancelAnimationFrame(animationLoop); }
+        if (x >= x2 && y <= y2) { cancelAnimationFrame(animationLoop); }
     }
-}
-
-if (x1 <= x2 && y1 >y2) {
-    if (x < x2) { x += 10; }
-    if (y > y2) { y -= 10; }
-    if (x >=x2 && y <= y2) { cancelAnimationFrame(animationLoop); }
-    }   
 }
 
 function clear() {
@@ -129,8 +123,15 @@ function clear() {
 disableClick();
 audio('./media/winGame.mp3');
 animateLineDrawing();
-setTimeout(function () { clear(); resetGame(); }. 1000);
+setTimeout(function () { clear(); resetGame(); }, 1000);
 }
 
 
 
+function resetGame() {
+    for (let i = 0; i < 9; i++) {
+        let square = document.getElementById(String(i));
+        square.style.backgroundImage = '';
+    }
+    selectedSquares = [];
+}
